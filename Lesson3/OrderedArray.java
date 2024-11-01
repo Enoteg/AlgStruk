@@ -1,13 +1,8 @@
 package Lesson3;
 
 public class OrderedArray extends ParentLongArray {
-    private long minValue;
-    private long maxValue;
-
     public OrderedArray(int size) {
         super(size);
-        this.minValue = Long.MAX_VALUE;
-        this.maxValue = Long.MIN_VALUE;
     }
 
     @Override
@@ -15,22 +10,24 @@ public class OrderedArray extends ParentLongArray {
         int operationsNumber = 0;
         int lowerBound = 0;
         int upperBound = nElems - 1;
+        int currentIndex;
 
-        while (lowerBound <= upperBound) {
-            operationsNumber++;
-            int mid = (lowerBound + upperBound) / 2;
-            if (array[mid] == searchValue) {
-                System.out.println("Количество операций в упорядоченном массиве: " + operationsNumber);
+        while (true) {
+            System.out.println("Количество операций в упорядоченном массиве: " + ++operationsNumber);
+            currentIndex = (lowerBound + upperBound) / 2;
+            long currentElement = array[currentIndex];
+            if (currentElement == searchValue) {
                 return true;
-            } else if (array[mid] < searchValue) {
-                lowerBound = mid + 1;
+            } else if (lowerBound > upperBound) {
+                return false;
             } else {
-                upperBound = mid - 1;
+                if (currentElement < searchValue) {
+                    lowerBound = currentIndex + 1;
+                } else {
+                    upperBound = currentIndex - 1;
+                }
             }
         }
-
-        System.out.println("Количество операций в упорядоченном массиве: " + operationsNumber);
-        return false;
     }
 
     @Override
@@ -53,10 +50,7 @@ public class OrderedArray extends ParentLongArray {
             }
         }
 
-        for (int j = nElems; j > insertIndex; j--) {
-            array[j] = array[j - 1];
-        }
-
+        System.arraycopy(array, insertIndex, array, insertIndex + 1, nElems - insertIndex);
         array[insertIndex] = value;
         nElems++;
 
@@ -92,10 +86,7 @@ public class OrderedArray extends ParentLongArray {
             return false;
         }
 
-        for (int j = deleteIndex; j < nElems - 1; j++) {
-            array[j] = array[j + 1];
-        }
-
+        System.arraycopy(array, deleteIndex + 1, array, deleteIndex, nElems - deleteIndex - 1);
         nElems--;
 
         if (nElems == 0) {

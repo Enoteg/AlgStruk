@@ -6,7 +6,7 @@ public class Client {
     public static void main(String[] args) {
         String separator = "__________________________________________________________";
         Random random = new Random();
-        int size = 1000;
+        int size = 100;
         CommonArray commonArray = new CommonArray(size);
         OrderedArray orderedArray = new OrderedArray(size);
 
@@ -15,30 +15,28 @@ public class Client {
             boolean insertResultOrderedArray = false;
 
             while (!insertResultCommonArray) {
-                insertResultCommonArray = commonArray.insert(random.nextLong(1000));
+                insertResultCommonArray = commonArray.insert(random.nextLong(100));
             }
 
             while (!insertResultOrderedArray) {
-                insertResultOrderedArray = orderedArray.insert(random.nextLong(1000));
+                insertResultOrderedArray = orderedArray.insert(random.nextLong(100));
             }
         }
 
-        long searchValue = random.nextLong(500);
-
-        System.out.println("Ищем значение: " + searchValue);
+        long searchValue = random.nextLong(100);
 
         if (commonArray.contains(searchValue)) {
-            System.out.println("Значение было найдено в CommonArray: " + searchValue);
+            System.out.println("Значение было найдено. " + searchValue);
         } else {
-            System.out.println("Не удалось найти значение в CommonArray: " + searchValue);
+            System.out.println("Не удалось найти значение. " + searchValue);
         }
 
         System.out.println(separator);
 
         if (orderedArray.contains(searchValue)) {
-            System.out.println("Значение было найдено в OrderedArray: " + searchValue);
+            System.out.println("Значение было найдено. " + searchValue);
         } else {
-            System.out.println("Не удалось найти значение в OrderedArray: " + searchValue);
+            System.out.println("Не удалось найти значение. " + searchValue);
         }
     }
-}    
+}
