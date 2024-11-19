@@ -5,9 +5,7 @@ import java.util.Scanner;
 
 public class Summa {
     public static void main(String[] args) {
-        try {
-            Scanner scanner = new Scanner(new File("C:\\Users\\Enoteg\\Desktop\\progstuff\\input.txt"));
-            FileWriter writer = new FileWriter("C:\\Users\\Enoteg\\Desktop\\progstuff\\output.txt");
+            Scanner scanner = new Scanner(System.in);
 
             int N = scanner.nextInt();
             int result = 0;
@@ -21,12 +19,9 @@ public class Summa {
                 }
             }
 
-            writer.write(Integer.toString(result));
-            writer.close();
+            System.out.println(result);
             scanner.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
-}
+
 

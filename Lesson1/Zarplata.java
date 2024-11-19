@@ -5,9 +5,7 @@ import java.util.Scanner;
 
 public class Zarplata {
     public static void main(String[] args) {
-        try {
-            Scanner scanner = new Scanner(new File("C:\\Users\\Enoteg\\Desktop\\progstuff\\input.txt"));
-            FileWriter writer = new FileWriter("C:\\Users\\Enoteg\\Desktop\\progstuff\\output.txt");
+            Scanner scanner = new Scanner(System.in);
 
             int employee1 = scanner.nextInt();
             int employee2 = scanner.nextInt();
@@ -18,11 +16,8 @@ public class Zarplata {
 
             int result = maxSalary - minSalary;
 
-            writer.write(Integer.toString(result));
-            writer.close();
+            System.out.println(result);
             scanner.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
-}
+

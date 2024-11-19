@@ -1,18 +1,13 @@
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Olimpiada {
     public static void main(String[] args) {
         try {
-            Scanner scanner = new Scanner(new File("C:\\Users\\Enoteg\\Desktop\\progstuff\\input.txt"));
-            FileWriter writer = new FileWriter("C:\\Users\\Enoteg\\Desktop\\progstuff\\output.txt");
+            Scanner scanner = new Scanner(System.in);
 
             int N = scanner.nextInt();
             int[] time = new int[N];
-
             for (int i = 0; i < N; i++) {
                 time[i] = scanner.nextInt();
             }
@@ -31,15 +26,15 @@ public class Olimpiada {
 
             int winner = 0;
             for (int i = 1; i < 3; i++) {
-                if (results[i] > results[winner] || (results[i] == results[winner] && penalties[i] < penalties[winner])) {
+                if (results[i] > results[winner] || 
+                    (results[i] == results[winner] && penalties[i] < penalties[winner])) {
                     winner = i;
                 }
             }
 
-            writer.write(Integer.toString(winner + 1));
-            writer.close();
+            System.out.println(winner + 1);
             scanner.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

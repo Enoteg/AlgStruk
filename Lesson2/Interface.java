@@ -7,5 +7,5 @@ public interface Interface {
     void display();
     int getSize();
     long getMin();
-    int getMax();
+    long getMax();
 }

@@ -1,28 +1,20 @@
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class AplusB {
     public static void main(String[] args) {
-
         try {
-            File input = new File("C:\\Users\\Enoteg\\Desktop\\progstuff\\input.txt");
-            File output = new File("C:\\Users\\Enoteg\\Desktop\\progstuff\\output.txt");
-
-            Scanner scanner = new Scanner(input);
+            Scanner scanner = new Scanner(System.in);
 
             long a = scanner.nextLong();
+
             long b = scanner.nextLong();
 
             long sum = a + b;
 
-            FileWriter writer = new FileWriter(output);
-            writer.write(Long.toString(sum));
-            writer.close();
+            System.out.println(sum);
 
             scanner.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
