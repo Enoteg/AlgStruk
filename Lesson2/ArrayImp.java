@@ -67,7 +67,7 @@ public class ArrayImp implements Interface {
         long maxElem = array[0];
         for (int i = 0; i < a; i++){
             if (array[i] > maxElem) {
-                maxElem = (long) array[i];
+                maxElem = (int) array[i];
             }
         }
         return maxElem;
@@ -78,7 +78,7 @@ public class ArrayImp implements Interface {
         long minElem = array[0];
         for (int i = 0; i < a; i++){
             if(array[i] < minElem){
-               minElem = (long) array[i];
+               minElem = (int) array[i];
             }
         }
         return minElem;
