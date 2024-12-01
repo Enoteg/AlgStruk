@@ -9,19 +9,19 @@ public class Client {
         long end;
         long begin;
 
-        int size = 10000;
+        int size = 20000;
         Interface bubbleArray = new BubbleSortArray(size);
         Interface insertArray = new InsertionSortArray(size);
         Interface selectArray = new SelectionSortArray(size);
 
         for (int i = 0; i < size; i++) {
-            bubbleArray.insert(random.nextLong(10000));
-            insertArray.insert(random.nextLong(10000));
-            selectArray.insert(random.nextLong(10000));
+            bubbleArray.insert(random.nextLong(100000));
+            insertArray.insert(random.nextLong(100000));
+            selectArray.insert(random.nextLong(100000));
         }
 
             System.out.println("Массив для BubbleSort: ");
-            bubbleArray.display();
+//            bubbleArray.display();
             bubbleArray.bubbleSort();
             System.out.println("Отсортированный массив сортировкой BubbleSort:");
             bubbleArray.bubbleSort();
@@ -32,7 +32,7 @@ public class Client {
 
             System.out.println();
             System.out.println("Массив для InsertionSort: ");
-            insertArray.display();
+//            insertArray.display();
             insertArray.insertionSort();
             System.out.println("Отсортированный массив сортировкой InsertionSort:");
             insertArray.insertionSort();
@@ -43,7 +43,7 @@ public class Client {
 
             System.out.println();
             System.out.println("Массив для SelectionSort: ");
-            selectArray.display();
+//            selectArray.display();
             selectArray.selectionSort();
             System.out.println("Отсортированный массив сортировкой SelectionSort:");
             selectArray.selectionSort();
