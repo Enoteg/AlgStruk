@@ -1,6 +1,6 @@
 package Lesson6;
 
-public interface InterfaceStack {
+public interface StackImpl {
     void push(char j);
     char pop();
     char peek();

@@ -1,10 +1,11 @@
 package Lesson6;
 
-public interface InterfacePriorityQueue {
-    void insert(long item);
+public interface QueueImpl {
+    void insert(long j);
     long remove();
-    long peekMin();
+    long peekFront();
     boolean isEmpty();
     boolean isFull();
+    int size();
     void display();
 }

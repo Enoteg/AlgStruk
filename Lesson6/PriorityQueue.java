@@ -1,6 +1,6 @@
 package Lesson6;
 
-public class PriorityQueue {
+public class PriorityQueue implements QueueImpl {
     private int maxSize;
     private long[] queArray;
     private int nItems;
@@ -12,42 +12,69 @@ public class PriorityQueue {
     }
 
     public void insert(long item) {
-        int j;// сдвинуть вверх
-        if (nItems == 0) { // Если очередь пуста,
-            queArray[nItems++] = item; // вставляем в ячейку 0
-        } else { // Если очередь содержит элементы
-            for (j = nItems - 1; j >= 0; j--) { // Перебор в обратном направлении
-                if (item > queArray[j]) { // Если новый элемент больше,
-                    queArray[j + 1] = queArray[j]; // сдвинуть вверх
-                } else { // Если меньше,
-                    break; // сдвиг прекращается
+        int j;
+        if (nItems == 0) {
+            queArray[nItems++] = item;
+        } else {
+            for (j = nItems - 1; j >= 0; j--) {
+                if (item > queArray[j]) {
+                    queArray[j + 1] = queArray[j];
+                } else {
+                    break;
                 }
             }
-            queArray[j + 1] = item; // Вставка элемента
+            queArray[j + 1] = item;
             nItems++;
         }
     }
 
     public long remove() {
+        if (isEmpty()) {
+            System.out.println("Ошибка: Приоритетная очередь пуста!");
+            return -1;
+        }
         return queArray[--nItems];
     }
 
+    @Override
+    public long peekFront() {
+        if (isEmpty()) {
+            System.out.println("Ошибка: Приоритетная очередь пуста!");
+            return -1;
+        }
+        return queArray[0];
+    }
+
     public long peekMin() {
-        return queArray[nItems-1];
+        if (isEmpty()) {
+            System.out.println("Ошибка: Приоритетная очередь пуста!");
+            return -1;
+        }
+        return queArray[nItems - 1];
     }
 
     public boolean isEmpty() {
-        return (nItems==0);
+        return (nItems == 0);
     }
 
     public boolean isFull() {
         return (nItems == maxSize);
     }
-    public void display() {
-        for (int i = 0; i < nItems; i++) {
-            System.out.print(queArray[i] + " ");
-        }
-        System.out.println();
-    }
-}
 
+    @Override
+    public int size() {
+        return nItems;
+    }
+
+    public void display() {
+        if (isEmpty()) {
+            System.out.println("Очередь пуста!");
+        } else {
+            for (int i = 0; i < nItems; i++) {
+                System.out.print(queArray[i] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+}
