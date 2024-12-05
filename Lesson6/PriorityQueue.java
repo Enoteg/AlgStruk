@@ -61,7 +61,7 @@ public class PriorityQueue implements QueueImpl {
         return (nItems == maxSize);
     }
 
-    @Override
+
     public int size() {
         return nItems;
     }
