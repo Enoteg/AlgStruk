@@ -1,25 +1,30 @@
 package Lesson7;
 
-public class PriorityQueue<T> implements QueueImpl<T> {
-    private Link<T> front;
+public class PriorityQueue {
+    private Link<Integer> front;
     private int size;
     private int maxSize;
 
     public PriorityQueue(int size) {
         front = null;
         this.size = 0;
+        this.maxSize = size;
     }
 
+    public void insert(Integer item) {
+        if (isFull()) {
+            System.out.println("Ошибка: Очередь переполнена!");
+            return;
+        }
 
-    public void insert(T item) {
-        Link<T> newLink = new Link<>(item);
+        Link<Integer> newLink = new Link<>(item);
         if (isEmpty()) {
             front = newLink;
         } else {
-            Link<T> current = front;
-            Link<T> previous = null;
+            Link<Integer> current = front;
+            Link<Integer> previous = null;
 
-            while (current != null && ((Comparable<T>) item).compareTo(current.getData()) <= 0) {
+            while (current != null && item.compareTo(current.getData()) <= 0) {
                 previous = current;
                 current = current.getNext();
             }
@@ -36,19 +41,18 @@ public class PriorityQueue<T> implements QueueImpl<T> {
     }
 
 
-    public T remove() {
+    public Integer remove() {
         if (isEmpty()) {
             System.out.println("Ошибка: Приоритетная очередь пуста!");
             return null;
         }
-        T data = front.getData();
+        Integer data = front.getData();
         front = front.getNext();
         size--;
         return data;
     }
 
-
-    public T peekFront() {
+    public Integer peekFront() {
         if (isEmpty()) {
             System.out.println("Ошибка: Приоритетная очередь пуста!");
             return null;
@@ -56,34 +60,31 @@ public class PriorityQueue<T> implements QueueImpl<T> {
         return front.getData();
     }
 
-    public T peekMin() {
+    public Integer peekMin() {
         if (isEmpty()) {
             System.out.println("Ошибка: Приоритетная очередь пуста!");
             return null;
         }
-        Link<T> current = front;
+        Link<Integer> current = front;
         while (current.getNext() != null) {
             current = current.getNext();
         }
         return current.getData();
     }
 
-
     public boolean isEmpty() {
         return size == 0;
     }
-
 
     public int size() {
         return size;
     }
 
-
     public void display() {
         if (isEmpty()) {
             System.out.println("Очередь пуста!");
         } else {
-            Link<T> current = front;
+            Link<Integer> current = front;
             while (current != null) {
                 System.out.print(current.getData() + " ");
                 current = current.getNext();
@@ -91,7 +92,8 @@ public class PriorityQueue<T> implements QueueImpl<T> {
             System.out.println();
         }
     }
+
     public boolean isFull() {
-        return size > maxSize;
+        return size >= maxSize;
     }
 }

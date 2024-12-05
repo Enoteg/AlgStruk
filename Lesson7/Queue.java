@@ -1,20 +1,25 @@
 package Lesson7;
 
-public class Queue<T> implements QueueImpl<T> {
-    private Link<T> front;
-    private Link<T> rear;
+public class Queue {
+    private Link front;
+    private Link rear;
     private int size;
     private int maxSize;
 
-    public Queue(int size) {
+    public Queue(int maxSize) {
         front = null;
         rear = null;
         this.size = 0;
+        this.maxSize = maxSize;
     }
 
+    public void insert(Integer item) {
+        if (isFull()) {
+            System.out.println("Ошибка: Очередь переполнена!");
+            return;
+        }
 
-    public void insert(T item) {
-        Link<T> newLink = new Link<>(item);
+        Link newLink = new Link(item);
         if (isEmpty()) {
             front = newLink;
         } else {
@@ -24,13 +29,12 @@ public class Queue<T> implements QueueImpl<T> {
         size++;
     }
 
-
-    public T remove() {
+    public Integer remove() {
         if (isEmpty()) {
             System.out.println("Ошибка: Очередь пуста!");
             return null;
         }
-        T data = front.getData();
+        Integer data = (Integer) front.getData();
         front = front.getNext();
         if (front == null) {
             rear = null;
@@ -39,31 +43,27 @@ public class Queue<T> implements QueueImpl<T> {
         return data;
     }
 
-
-    public T peekFront() {
+    public Integer peekFront() {
         if (isEmpty()) {
             System.out.println("Ошибка: Очередь пуста!");
             return null;
         }
-        return front.getData();
+        return (Integer) front.getData();
     }
-
 
     public boolean isEmpty() {
         return size == 0;
     }
 
-
     public int size() {
         return size;
     }
 
-
     public void display() {
         if (isEmpty()) {
             System.out.println("Очередь пуста!");
-        } else {;
-            Link<T> current = front;
+        } else {
+            Link current = front;
             while (current != null) {
                 System.out.print(current.getData() + " ");
                 current = current.getNext();
@@ -71,6 +71,7 @@ public class Queue<T> implements QueueImpl<T> {
             System.out.println();
         }
     }
+
     public boolean isFull() {
         return size > maxSize;
     }

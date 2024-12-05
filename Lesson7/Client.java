@@ -13,8 +13,8 @@ public class Client {
         PriorityQueue priorityQueue = new PriorityQueue(size);
 
         for (int i = 0; i < size; i++) {
-            queue.insert(random.nextLong(1000));
-            priorityQueue.insert(random.nextLong(1000));
+            queue.insert(random.nextInt(1000));
+            priorityQueue.insert(random.nextInt(1000));
         }
 
         System.out.println("Содержимое обычной очереди:");
